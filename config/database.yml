@@ -1,16 +1,24 @@
 default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 10 } %>
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: bleater-dev
+  host: db
+  username: postgres
+  password:
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  host: <%= ENV['POSTGRES_HOST'] ||= 'db' %>
+  username: <%= ENV['POSTGRES_USER'] ||= 'postgres' %>
+  password: <%= ENV['POSTGRES_PASSWORD'] ||= '' %>
+  database: bleater-test
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: bleater
+  username: bleater
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD']%>

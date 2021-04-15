@@ -35,6 +35,7 @@
 
       <div class="panel-footer">
         <%= link_to 'New Micropost', new_micropost_path, class: 'btn btn-default' %>
+        <%= will_paginate @microposts %>
       </div>
 
     </div>

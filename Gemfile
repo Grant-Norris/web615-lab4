@@ -12,7 +12,7 @@ gem 'bootstrap_form'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4'
 # Use Puma as the app server
-gem 'sqlite3'
+gem 'pg', '~>0.21'
 gem 'puma'
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -29,9 +29,9 @@ gem 'turbolinks'
 gem 'jbuilder'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 3.0'
+gem 'will_paginate', '~> 3.1.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -53,6 +53,8 @@ group :development do
   gem 'annotate'
   gem 'rails-erd'
 end
-
+group :production do
+  gem 'rails_12factor'
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
